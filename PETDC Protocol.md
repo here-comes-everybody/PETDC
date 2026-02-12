@@ -11,7 +11,7 @@
 
 ## Version Lock Notice
 
-&gt; **This document contains the enforceable rules of PETDC.** For framework positioning, academic context, usage guidance, and implementation examples, consult the accompanying ReadMe (2026-02-13). **If version mismatch detected between Protocol and ReadMe, Protocol rules take precedence.**
+&gt; **This document contains the enforceable rules of PETDC.** For framework positioning, academic context, usage guidance, and implementation examples, consult the accompanying [ReadMe](https://github.com/here-comes-everybody/PETDC/blob/main/ReadMe.md). **If version mismatch detected between Protocol and ReadMe, Protocol rules take precedence.**
 
 ---
 
