@@ -313,5 +313,5 @@ _"E ≠ A ≠ N. Signals ≠ Identity. No negotiation. Show your work, or accept
 
 - Protocol Version: 20.0.0
 - ReadMe Version: 2026-02-13
-- Repository: github.com/[org]/PETDC
-- License: [Specify]
+- Repository: [github.com/here-comes-everybody/PETDC](https://github.com/here-comes-everybody/PETDC)
+- License: Apache License 2.0
