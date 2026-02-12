@@ -2,11 +2,11 @@
 
 **Protocol for the Evaluation of Trust-Dependent Claims**
 
-**Version:** 20.0.0 (Mechanical Enforcement)  
+**Version:** 1.0.0 (Initial Publication)  
 **Status:** Stable / Mechanism-Bound / Adversarial  
 **Classification:** Epistemic Security Standard  
 **Effective Date:** 2026-02-13  
-**Accompanies:** PETDC ReadMe 2026-02-13
+**Accompanies:** [PETDC ReadMe](https://github.com/here-comes-everybody/PETDC/blob/main/ReadMe.md)
 
 ---
 
