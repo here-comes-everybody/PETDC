@@ -604,7 +604,6 @@ PETDC classifies; you decide. General principles for using classifications:
 
 |                | Protocol                              | ReadMe                      |
 | -------------- | ------------------------------------- | --------------------------- |
-| **Version**    | 1.0 (semantic)                        | 2026-02-13 (dated)          |
 | **Updates**    | Rules changes only                    | Context, examples, guidance |
 | **Precedence** | **Supreme**                           | Subordinate                 |
 | **Repository** | github.com/here-comes-everybody/PETDC | Same                        |
