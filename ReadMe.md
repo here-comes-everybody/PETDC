@@ -6,7 +6,7 @@
 
 ## Version Lock Notice
 
-&gt; **This document provides context, guidance, and application examples for PETDC.** For enforceable rules, consult the Protocol (v1.0). **If version mismatch detected between Protocol and ReadMe, Protocol rules take precedence.** This ReadMe is dated (2026-02-13) and may update independently of Protocol versions.
+&gt; **This document provides context, guidance, and application examples for PETDC.** For enforceable rules, consult the Protocol. **If version mismatch detected between Protocol and ReadMe, Protocol rules take precedence.** This ReadMe may update independently of Protocol versions.
 
 ---
 
