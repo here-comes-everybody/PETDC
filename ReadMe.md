@@ -1,6 +1,6 @@
 # PETDC ReadMe — 2026-02-13
 
-**Accompanying Document: PETDC Protocol v1.0.0**
+**Accompanying Document: PETDC Protocol**
 
 ---
 
