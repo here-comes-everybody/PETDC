@@ -5,7 +5,6 @@
 **Version:** 1.0.0 (Initial Publication)  
 **Status:** Stable / Mechanism-Bound / Adversarial  
 **Classification:** Epistemic Security Standard  
-**Effective Date:** 2026-02-13  
 **Accompanies:** [PETDC ReadMe](https://github.com/here-comes-everybody/PETDC/blob/main/ReadMe.md)
 
 ---
