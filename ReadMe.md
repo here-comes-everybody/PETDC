@@ -608,7 +608,7 @@ PETDC classifies; you decide. General principles for using classifications:
 | **Updates**    | Rules changes only     | Context, examples, guidance |
 | **Precedence** | **Supreme**            | Subordinate                 |
 | **Repository** | github.com/[org]/PETDC | Same                        |
-| **License**    | [Specify]              | Same                        |
+| **License**    | Apache License 2.0     | Same                        |
 
 **Version Check:** Before use, verify Protocol version matches ReadMe date. Mismatch → Protocol governs.
 
