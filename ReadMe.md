@@ -602,13 +602,13 @@ PETDC classifies; you decide. General principles for using classifications:
 
 ## Document Control
 
-|                | Protocol               | ReadMe                      |
-| -------------- | ---------------------- | --------------------------- |
-| **Version**    | 1.0 (semantic)         | 2026-02-13 (dated)          |
-| **Updates**    | Rules changes only     | Context, examples, guidance |
-| **Precedence** | **Supreme**            | Subordinate                 |
-| **Repository** | github.com/[org]/PETDC | Same                        |
-| **License**    | Apache License 2.0     | Same                        |
+|                | Protocol                              | ReadMe                      |
+| -------------- | ------------------------------------- | --------------------------- |
+| **Version**    | 1.0 (semantic)                        | 2026-02-13 (dated)          |
+| **Updates**    | Rules changes only                    | Context, examples, guidance |
+| **Precedence** | **Supreme**                           | Subordinate                 |
+| **Repository** | github.com/here-comes-everybody/PETDC | Same                        |
+| **License**    | Apache License 2.0                    | Same                        |
 
 **Version Check:** Before use, verify Protocol version matches ReadMe date. Mismatch → Protocol governs.
 
