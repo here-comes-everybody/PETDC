@@ -1,6 +1,6 @@
 # PETDC ReadMe
 
-**Accompanying Document: PETDC Protocol**
+[**Accompanying Document: PETDC Protocol**](https://github.com/here-comes-everybody/PETDC/blob/main/PETDC%20Protocol.md)
 
 ---
 
