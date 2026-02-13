@@ -1,8 +1,8 @@
-# PETDC v1.1.0 — Protocol
+# PETDC v1.2.0 — Protocol
 
 **Protocol for the Evaluation of Trust-Dependent Claims**
 
-**Version:** 1.1.0 (Refined)  
+**Version:** 1.2.0  
 **Status:** Stable / Mechanism-Bound / Adversarial  
 **Classification:** Epistemic Security Standard
 
@@ -11,8 +11,6 @@
 ## Version Lock Notice
 
 &gt; **This document contains the enforceable rules of PETDC.** If version mismatch detected between Protocol and ReadMe, Protocol rules take precedence.
-
-&gt; **v1.1.0 Changes:** Tightened Rule 2 criteria, softened Rule 3 consensus treatment, added implicature guard, clarified calibration purpose, added brittleness warning. No new rules added—existing rules refined.
 
 ---
 
@@ -26,17 +24,11 @@ PETDC classifies claims into three types:
 
 **Fundamental constraint:** E ≠ A ≠ N. No upward substitution.
 
-**Output:** D-score (D0-D3) and Trilemma classification.
-
 ---
 
 ## I. Purpose & Scope
 
-**Function:** Mechanical audit forcing explicit decomposition. Non-negotiable in adversarial contexts.
-
-**Core Design Principle:** PETDC is intentionally harsh to prevent E→A substitution. It will classify many historically-important A-claims as D1/Problematic. This is expected behavior, not failure.
-
-**Warning:** PETDC produces mechanically correct but potentially unhelpful outputs. Users may abandon or weaponize results. See ReadMe Section X for mitigation.
+**Function:** Mechanical audit forcing explicit decomposition. Exposes when evidence is insufficient regardless of consensus.
 
 ---
 
@@ -62,19 +54,26 @@ PETDC classifies claims into three types:
 
 **Fundamental:** E ≠ A ≠ N. **No upward substitution.**
 
-### 3.2 A-Claim Ceiling
+### 3.2 A-Claim Admissibility (v1.2.0)
 
-**Historical claims:** Maximum D-score = D2. **Default: D1.**
+**Historical A-claims may achieve D2 or higher only with:**
 
-**D3 A-claim requires:** Real-time biometric CVD with independent custody, OR adversarial real-time visual observation meeting all criteria (hostile parties, simultaneity, clear ID, exposure incentive, public confirmation).
+| Control Type                                    | Requirement                                                                              | D-Score Cap |
+| ----------------------------------------------- | ---------------------------------------------------------------------------------------- | ----------- |
+| **Real-time biometric CVD**                     | Independent custody of vitals/tissue at claim time                                       | D3          |
+| **Adversarial real-time visual**                | Hostile parties present, simultaneity, clear ID, exposure incentive, public confirmation | D3          |
+| **Post-hoc biometric verification**             | DNA/dental/forensic match to known relatives/samples with chain of custody               | D2          |
+| **Cryptographic identity binding**              | Signed attestations with public key infrastructure at claim time                         | D2          |
+| **Multi-party adversarial documentary custody** | Hostile archives with integrity verification, no single stakeholder control              | D2          |
+| **Repeated adversarial observation**            | Ongoing custody with hostile access over time, not single event                          | D2          |
 
-**Absent these → D1 default.** This is expected and correct.
+**Absent these → D1 (insufficient evidence).**
 
 ### 3.3 OIE and HDE
 
 **OIE (real-time):** Independent custody from claim time.
 
-**HDE (historical):** Independence-weighted retrospective evidence.
+**HDE (historical):** Independence-weighted retrospective evidence. Consensus/media: **zero weight.**
 
 ---
 
@@ -100,14 +99,14 @@ PETDC classifies claims into three types:
 
 ## VI. Table B: Affirmative Construction
 
-| Row | Element                    | Requirement                                                                                  |
-| --- | -------------------------- | -------------------------------------------------------------------------------------------- |
-| 1   | **CVD Inventory**          | Mechanism-bound: "This verifies [E/A/N] by [measurement], discriminating from [alternative]" |
-| 2   | **Discrimination Entropy** | Per-element; alternative family characterized                                                |
-| 3   | **OIE/HDE Verification**   | Shadowing Check or Independence Weighting                                                    |
-| 4   | **Asymmetry Assessment**   | VAR/HTR with bounds                                                                          |
-| 5   | **Control Classification** | Per Section V                                                                                |
-| 6   | **Gap Inventory**          | Explicit status; causation; patterned destruction                                            |
+| Row | Element                    | Requirement                                                                                                                                                   |
+| --- | -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1   | **CVD Inventory**          | Mechanism-bound: "This verifies [E/A/N] by [measurement], discriminating from [alternative]"                                                                  |
+| 2   | **Discrimination Entropy** | Per-element; alternative family characterized                                                                                                                 |
+| 3   | **OIE/HDE Verification**   | Shadowing Check or Independence Weighting                                                                                                                     |
+| 4   | **Asymmetry Assessment**   | VAR/HTR with bounds                                                                                                                                           |
+| 5   | **Control Classification** | Per Section V                                                                                                                                                 |
+| 6   | **Gap Inventory**          | **Mandatory specificity:** (a) missing control class, (b) specific unexcluded alternative, (c) normal process that would generate it, (d) why absence matters |
 
 ---
 
@@ -116,26 +115,16 @@ PETDC classifies claims into three types:
 **Rule 1: Mechanism Binding**
 Invalid: "Physical presence verifies agency" absent alternative family. **Mechanical classification as Problematic.**
 
-**Rule 2: A-Claim Substitution Detection (Tightened v1.1.0)**
+**Rule 2: A-Claim Substitution Detection**
 
 IF historical_claim AND A-claim asserted:
 
-- IF CVD_inventory contains ONLY (artifacts, signals, imaging, testimony) without **adversarial multi-party custody** (hostile parties with economic incentive to expose, independent retention, cryptographic or physical integrity verification)
-- AND NO (biometric CVD, adversarial visual observation, PUF-enhanced control)
-- **OR IF** E-claim pattern density implies A-claim without explicit statement (implicature smuggling detected)
+- IF CVD_inventory lacks admissible controls (Section 3.2)
+- OR IF E-claim pattern implies A-claim without explicit statement
 - THEN: TRIGGER EWP, A-claim_D-score ← D1, OUTPUT "E-claim substitution"
 
-**Rule 3: Consensus Treatment (Softened v1.1.0)**
-
-Academic/media consensus: **non-decisive weight only.**
-
-Consensus counts only if:
-
-- Diverse independent methods converge
-- Adversarial scrutiny present (parties with incentive to disprove remained silent or confirmed)
-- No evidence of coordination or information cascade
-
-Otherwise: consensus weight → 0 for that claim.
+**Rule 3: Consensus Exclusion**
+Academic/media consensus: **zero weight.**
 
 **Rule 4: Audit ≠ OIE**
 External audit: max 0.5 credit. Never achieves Distributed.
@@ -146,11 +135,8 @@ Comparable operations preserve CVD + claimed mission absent CVD + PR extensive �
 **Rule 6: Temporal Firewall**
 Real-time: verification ≤ claim time + 24hrs.
 
-**Rule 7: Signal ≠ Biometric (Refined v1.1.0)**
-
-Signals/telemetry/voice/biomedical reception: **E-claim default.**
-
-**Exception:** Cryptographically authenticated, hostile-party-captured signals with time-locked commitments and cross-validation may receive **E-claim enhanced weight** (not A-claim credit).
+**Rule 7: Signal ≠ Biometric**
+Signals/telemetry/voice/biomedical reception: **E-claim default.** No A-credit.
 
 **Rule 8: Control Classification Strictness**
 
@@ -159,6 +145,8 @@ Signals/telemetry/voice/biomedical reception: **E-claim default.**
 | Physical artifacts distributed     | Distributed | Centralized                  |
 | Signals/telemetry                  | Distributed | **Centralized**              |
 | Biometric CVD, independent custody | Distributed | Distributed/Semi-Distributed |
+| Post-hoc biometric verification    | Distributed | Distributed/Semi-Distributed |
+| Cryptographic identity binding     | Distributed | Semi-Distributed             |
 | PUF-attested + liveness biometric  | Distributed | Semi-Distributed             |
 
 **Rule 9: Gap Pattern Inference**
@@ -168,14 +156,14 @@ Absent CVD where comparables preserve CVD: **patterned destruction inferred, EWP
 
 ## VIII. D-Score Rubric
 
-| Score  | Standard                  | Historical A-Claim             |
-| ------ | ------------------------- | ------------------------------ |
-| **D0** | Fraud-compatible          | Default if no information      |
-| **D1** | Broad alternatives        | **Default historical A-claim** |
-| **D2** | One alternative excluded  | Maximum historical A-claim     |
-| **D3** | All alternatives excluded | Real-time biometric only       |
+| Score  | Standard                  | Meaning                                              |
+| ------ | ------------------------- | ---------------------------------------------------- |
+| **D0** | Fraud-compatible          | No information                                       |
+| **D1** | **Insufficient evidence** | **Broad alternatives remain**                        |
+| **D2** | One alternative excluded  | Evidence sufficient to exclude one major alternative |
+| **D3** | All alternatives excluded | Complete verification under stated controls          |
 
-**Interpretation:** D1 is expected and correct for historical A-claims. It indicates structural uncertifiability under PETDC controls, not evidentiary weakness.
+**Historical A-Claim Default: D1.** Evidence is insufficient, not "expected."
 
 ---
 
@@ -199,94 +187,46 @@ Absent CVD where comparables preserve CVD: **patterned destruction inferred, EWP
 
 INITIATION CHECKLIST:
 
-- [ ] Framework version explicit (v1.1.0)
-- [ ] Rule set visible (1-9)
-- [ ] A-claim admissibility stated
+- [ ] Framework version explicit (v1.2.0)
+- [ ] Rules 1-9 visible
+- [ ] A-claim admissibility stated (Section 3.2)
 - [ ] Control classification table included
-- [ ] "D1 default is expected" acknowledged
+- [ ] **D1 = insufficient evidence** acknowledged
 
 **Absent any → Default Problematic until explicit**
 
 ### 10.2 Prohibited Outputs
 
-| Prohibited               | Required                                 |
-| ------------------------ | ---------------------------------------- |
-| "Depending on..."        | "Rule X prohibits; Problematic"          |
-| "Weak-but-relevant"      | "Rule 7: E-only; no A-claim credit"      |
-| "If you want to push..." | "A-claim ceiling D1; no D2+ path"        |
-| "Not suspicious"         | "Rule 9: Patterned destruction inferred" |
+| Prohibited                 | Required                                                     |
+| -------------------------- | ------------------------------------------------------------ |
+| "D1 is expected"           | "D1 indicates insufficient evidence"                         |
+| "not evidentiary weakness" | "evidence is weak under stated controls"                     |
+| "structural limitation"    | "specific gap: [missing control] → [unexcluded alternative]" |
+| "depending on..."          | "Rule X prohibits; Problematic"                              |
+| "weak-but-relevant"        | "Rule 7: E-only; no A-claim credit"                          |
 
 ### 10.3 Self-Audit (Pre-Output)
 
 VERIFY:
 
 - [ ] No D-score negotiation
-- [ ] No partial credit for signals
-- [ ] Control classification table-matched
-- [ ] Gap pattern Rule 9 applied
-- [ ] A-claim ceiling enforced
-- [ ] Rule 2 implicature check completed
+- [ ] No apologetic framing for D1
+- [ ] Gap Inventory specifies unexcluded alternatives
+- [ ] A-claim ceiling enforced as insufficient evidence
 
 **FAIL ANY → Output Problematic with explicit Rule citation**
 
 ---
 
-## XI. Calibration Cases (Illustrative Only)
+## XI. Final Notes
 
-**Warning:** These cases demonstrate rule application patterns. They are **not templates** for template-matching. Each claim requires independent Table B completion.
+**PETDC exposes evidence weakness regardless of institutional consensus.**
 
-| Case                  | E   | A      | Label                                  | Key                                    |
-| --------------------- | --- | ------ | -------------------------------------- | -------------------------------------- |
-| **Apollo**            | D3  | **D1** | Problematic (A), Well-Placed Trust (E) | Rules 7-9; E-substitution              |
-| **Holocaust**         | D3  | **D2** | Well-Placed Trust                      | High HTR; no Rule 7 violation          |
-| **Theranos**          | D0  | —      | Problematic                            | Centralized; patterned destruction     |
-| **Tobacco (A-claim)** | D2  | **D1** | Problematic                            | Rule 2; adversarial documentary limits |
-
-**Do not match claims to table. Apply rules mechanically.**
+**No escape.** No Withheld. No negotiation.
 
 ---
 
-## XII. Key Distinctions
-
-### 12.1 Threshold Cryptography vs. Human Identity
-
-| Aspect  | Key Control           | Human Identity               |
-| ------- | --------------------- | ---------------------------- |
-| CVD     | HSM attestation       | Biometric telemetry          |
-| D3 path | Independent audit     | Real-time biometric custody  |
-| Type    | E-claim with policy   | Biological agency            |
-| Label   | Evidence-Proportional | **Problematic (historical)** |
-
-### 12.2 Signal Confusion (Rule 7)
-
-Bochum reception of Apollo biomedical signals:
-
-- Verifies **E:** Transmission occurred
-- **A-claim: Nothing.** Source could be recording, relay, simulation
-
-**No A-claim credit.**
-
----
-
-## XIII. Final Notes
-
-**PETDC is adversarially rigorous to institutional comfort.** It exposes:
-
-- E-claim substitution for A-claims (Rules 2, 7)
-- Audit substitution for OIE (Rule 4)
-- Consensus over-reliance (Rule 3)
-- Patterned destruction (Rules 5, 9)
-- Historical unearned D3 status (A-claim ceiling)
-
-**No escape.** No Withheld. No negotiation. Table B completes or fails; standards unmet → Problematic.
-
-**Brittleness Warning:** PETDC produces mechanically correct outputs that may be unhelpful or weaponized. See ReadMe Section X for responsible use.
-
-**Apollo paradigm:** Independent signal reception ≠ human identity verification. Distributed artifacts ≠ centralized identity control. **A-claim default: D1 (Problematic).**
-
----
-
-_"E ≠ A ≠ N. Signals ≠ Identity. No negotiation. Show your work, or accept the default."_
+_"E ≠ A ≠ N. Signals ≠ Identity. No negotiation."_
 
 **End of Protocol**
 
@@ -294,6 +234,6 @@ _"E ≠ A ≠ N. Signals ≠ Identity. No negotiation. Show your work, or accept
 
 **Document Control:**
 
-- Protocol Version: 1.1.0
+- Protocol Version: 1.2.0
 - Repository: github.com/here-comes-everybody/PETDC
 - License: Apache License 2.0

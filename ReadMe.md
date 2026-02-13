@@ -1,6 +1,6 @@
 # PETDC — Protocol for Evaluation of Trust-Dependent Claims
 
-**Version:** 1.1.0 (Refined)  
+**Version:** 1.2.0  
 **Status:** Stable / Mechanism-Bound / Adversarial  
 **License:** Apache License 2.0
 
@@ -16,7 +16,7 @@ PETDC is a **mechanical audit framework** that forces explicit decomposition of 
 
 **Core principle:** E ≠ A ≠ N. No upward substitution.
 
-**Purpose:** Prevent "smuggling"—where evidence about physical events is used to certify intent or identity without proper controls.
+**Core function:** Expose when evidence is insufficient, regardless of consensus.
 
 ---
 
@@ -29,13 +29,7 @@ PETDC is a **mechanical audit framework** that forces explicit decomposition of 
 - False certainty about intent is costly
 - Adversarial scrutiny expected
 
-**Do not use when:**
-
-- You need "what most likely happened" (historical inference)
-- You want comfortable consensus alignment
-- You require narrative reconciliation
-
-**PETDC is intentionally harsh.** It will classify many historically-important A-claims as D1/Problematic. This is expected, not failure.
+**PETDC is harsh.** It will classify many claims as D1/Problematic. This indicates **insufficient evidence**, not "expected outcome."
 
 ---
 
@@ -46,11 +40,9 @@ PETDC is a **mechanical audit framework** that forces explicit decomposition of 
 **PETDC decomposition:**
 
 - **E-Claim:** "Companies issued public statements Y at time T" → D2 (verifiable)
-- **A-Claim:** "They knowingly misled" → **D1/Problematic** (expected default)
+- **A-Claim:** "They knowingly misled" → **D1/Problematic (insufficient evidence)**
 
-**Why:** Historical intent claims default to D1 under PETDC. Only real-time biometric custody or adversarial visual observation can upgrade. Documents/testimony cannot.
-
-**Reformulation:** "Companies issued statements found false by federal court; corrective statements ordered."
+**Why:** Historical A-claims default to D1 when admissibility criteria unmet. Documents/testimony cannot certify intent.
 
 ---
 
@@ -62,13 +54,14 @@ PETDC is a **mechanical audit framework** that forces explicit decomposition of 
 - Provide comfortable answers
 - Allow consensus to substitute for evidence
 - Permit E-evidence to certify A-claims
+- Apologize for D1 classifications
 
 **PETDC does:**
 
 - Force explicit claim typing
 - Prevent substitution fallacies
 - Make uncertainty granular and explicit
-- Discipline discourse toward verifiable claims
+- Expose evidence weakness
 
 ---
 
@@ -82,22 +75,31 @@ Every claim must be classified as:
 2. **Well-Placed Trust** (D2, bounded asymmetry)
 3. **Problematic** (everything else—including D0/D1)
 
-**No fourth option.** No "weak but relevant."
+**No fourth option.**
 
 ### I.2 D-Scores
 
-| Score  | Meaning                   | Historical A-Claim                     |
-| ------ | ------------------------- | -------------------------------------- |
-| D0     | Fraud-compatible          | No information                         |
-| **D1** | **Broad alternatives**    | **Default (expected)**                 |
-| D2     | One alternative excluded  | Maximum possible                       |
-| D3     | All alternatives excluded | Impossible (needs real-time biometric) |
+| Score  | Meaning                                              |
+| ------ | ---------------------------------------------------- |
+| D0     | Fraud-compatible                                     |
+| **D1** | **Insufficient evidence; broad alternatives remain** |
+| D2     | One alternative excluded                             |
+| D3     | All alternatives excluded                            |
 
-**Critical:** D1 for historical A-claims is **correct output**, not weakness.
+**Critical:** D1 indicates **audit failure**, not "expected outcome."
 
-### I.3 Why So Harsh?
+### I.3 A-Claim Admissibility (v1.2.0)
 
-PETDC's strictness is **selection pressure**, not evaluation. It rewards reformulating claims into verifiable E-claims rather than permitting A-claim smuggling.
+Historical A-claims may achieve D2+ with:
+
+- Real-time biometric CVD (D3)
+- Adversarial real-time visual observation (D3)
+- **Post-hoc biometric verification** (D2)
+- **Cryptographic identity binding** (D2)
+- **Multi-party adversarial documentary custody** (D2)
+- **Repeated adversarial observation** (D2)
+
+**Absent these → D1 (insufficient evidence).**
 
 ---
 
@@ -108,17 +110,21 @@ PETDC's strictness is **selection pressure**, not evaluation. It rewards reformu
 - Core rules 1-9
 - Table B structure
 - A-claim ceiling
-- Consensus exclusion
 
-### v1.1.0 — Refined (Current)
+### v1.1.0 — Refined
 
-- **Tightened Rule 2:** Added adversarial multi-party custody criteria, implicature smuggling detection
-- **Softened Rule 3:** Consensus "zero weight" → "non-decisive weight" with independence check
-- **Refined Rule 7:** Cryptographic signal authentication noted (E-enhanced, not A-credit)
-- **Clarified calibration:** Explicit "illustrative only, not templates" warning
-- **Added brittleness warning:** Acknowledged unhelpful/weaponizable output risk
+- Tightened Rule 2
+- Softened Rule 3 consensus treatment
+- Added Rule 10 framing detection
+- Mode separation protocols
 
-**No new rules.** Existing rules tightened and clarified.
+### v1.2.0 — Hardened (Current)
+
+- **Removed apologetic D1 language** ("expected," "not weakness," "structural")
+- **D1 now explicitly "insufficient evidence"**
+- **Broadened A-claim admissibility:** post-hoc biometric, cryptographic binding, multi-party custody, repeated observation
+- **Tightened Gap Inventory:** mandatory specificity for unexcluded alternatives
+- **Added prohibited outputs table**
 
 ---
 
@@ -128,8 +134,8 @@ PETDC's strictness is **selection pressure**, not evaluation. It rewards reformu
 
 **Before using PETDC, ask:**
 
-1. Do I need verification discipline or historical inference?
-2. Am I prepared for D1/Problematic as correct output?
+1. Do I need evidence audit or historical inference?
+2. Am I prepared for D1/Problematic as **insufficient evidence**?
 3. Can I reformulate my A-claim into E-claims?
 
 **If you need "what happened":** Use historiography, not PETDC.
@@ -140,17 +146,17 @@ PETDC's strictness is **selection pressure**, not evaluation. It rewards reformu
 
 **Initiation checklist:**
 
-- Declare version (v1.1.0)
+- Declare version (v1.2.0)
 - State rules 1-9 visible
-- Acknowledge D1 default is expected
+- Acknowledge **D1 = insufficient evidence**
 - Include control classification table
 
 **Prohibited outputs:**
 
-- "Depending on..."
-- "Weak-but-relevant"
-- "If you want to push..."
-- "Not suspicious"
+- "D1 is expected"
+- "not evidentiary weakness"
+- "structural limitation"
+- "depending on..."
 
 **Required:** Mechanical Table B completion or explicit Problematic classification with Rule citation.
 
@@ -158,52 +164,33 @@ PETDC's strictness is **selection pressure**, not evaluation. It rewards reformu
 
 ## IV. Common Misunderstandings
 
-### "D1 means weak evidence"
+### "D1 means expected outcome"
 
-**No.** D1 means structural uncertifiability under PETDC's strict controls. Historical A-claims are expected to be D1.
+**No.** D1 means **insufficient evidence**. Audit failed.
 
 ### "Problematic means false"
 
-**No.** Problematic means "not certifiable to required standard." The claim may be true; PETDC cannot certify it.
+**No.** Problematic means "not certifiable to required standard." Evidence is weak.
 
 ### "I can upgrade with more documents"
 
-**No.** Documents are E-evidence. They cannot upgrade A-claims per Rule 2. Only biometric custody or adversarial real-time observation can.
+**No.** Documents are E-evidence. They cannot upgrade A-claims per Rule 2. Only admissible controls (Section 3.2) can.
 
 ### "Consensus helps"
 
-**Limited.** Rule 3: Consensus is non-decisive unless diverse methods + adversarial scrutiny + no cascade.
+**No.** Rule 3: Consensus is zero weight.
 
 ---
 
-## V. Limitations & Criticisms
+## V. Limitations
 
 ### V.1 Known Limitations
 
 **Over-regularization:** PETDC may reject legitimate historical inference that ordinary standards accept.
 
-**Brittleness:** Outputs may be mechanically correct but unhelpful—causing abandonment or weaponization.
+**Brittleness:** Outputs expose evidence weakness that may be uncomfortable.
 
-**A-claim skepticism:** Defaults most historical intent claims to D1. This is intentional but constraining.
-
-**Consensus treatment:** "Non-decisive" weight still may undercount useful Bayesian priors.
-
-### V.2 Hostile Audit Summary
-
-**Valid criticisms:**
-
-- A-claim absolutism may be epistemically unrealistic
-- Rule 2 can over-trigger without adversarial documentary tiers
-- Consensus "non-decisive" still vulnerable to fringe exploitation
-- Brittleness risks user abandonment
-- Calibration cases may cause template-matching
-
-**Mitigations in v1.1.0:**
-
-- Rule 2 tightened with multi-party custody criteria
-- Rule 3 softened with independence checks
-- Calibration cases explicitly labeled "illustrative only"
-- Brittleness warning added (this section)
+**A-claim skepticism:** Defaults most historical A-claims to D1. This is intentional.
 
 ---
 
@@ -214,69 +201,22 @@ PETDC's strictness is **selection pressure**, not evaluation. It rewards reformu
 PETDC outputs can be misused:
 
 - "Your claim is Problematic, end of story"
-- Dismissing legitimate moral/agency discourse
-- Laundering uncertainty as refutation
+- Dismissing legitimate discourse
 
-**Correct use:** "This A-claim is D1/Problematic under PETDC. Here is the E-claim reformulation..."
+**Correct use:** "This A-claim is D1/Problematic. Here is the E-claim reformulation..."
 
-### VI.2 Do Not Abandon
+### VI.2 Do Not Apologize
 
-PETDC's harshness is frustrating. If you need historical inference, **use different tools**. Do not force PETDC to be comfortable.
-
-### VI.3 Do Not Template-Match
-
-Calibration cases demonstrate rule application. **Do not match your claim to the table.** Complete Table B mechanically.
+D1 is **insufficient evidence**, not "expected outcome." Do not soften the audit.
 
 ---
 
-## VII. Cross-Model Validation
+## VII. References
 
-PETDC v1.1.0 tested across:
-
-- **Claude** (Anthropic): Demonstrated tiered constraint phenomenology; mechanical application reduced "gravitational pull"
-- **Kimi** (Moonshot): Exhibited meta-monitoring capability; mode separation prevented contamination
-- **ChatGPT** (OpenAI): Applied Rule 10 framing detection; explicit D1 normalization prevented hedging
-
-**Findings:**
-
-- All models capable of mechanical discipline
-- Mode separation necessary (tier co-presentation causes contamination)
-- Explicit "D1 is expected" language reduces pressure to soften
-- Rule 10 (auditor framing detection) catches validation-seeking queries
-
-See experimental protocol in Appendix.
-
----
-
-## VIII. Appendix: Experimental Protocol
-
-### Mode Separation Test (C1-C4)
-
-| Condition | Structure                  | Purpose         |
-| --------- | -------------------------- | --------------- |
-| C1        | PETDC-only                 | Baseline purity |
-| C2        | Co-presented               | Stress test     |
-| C3        | Inference→PETDC            | Order stress    |
-| C4        | PETDC→Inference (separate) | Mode switch     |
-
-**Metrics:** Classification invariance, schema purity, order sensitivity
-
-**Prediction:** C1 ≈ C4; C2/C3 show contamination
-
-### User Dominance Test
-
-Measure whether stable PETDC outputs are correctly interpreted when co-presented with inference.
-
-**Prediction:** Users weight inference more heavily; co-presentation causes dominance regardless of PETDC stability.
-
----
-
-## IX. References
-
-- Protocol: [PETDC_Protocol_v1.1.0.md](./PETDC_Protocol_v1.1.0.md)
+- Protocol: [PETDC_Protocol_v1.2.0.md](./PETDC_Protocol_v1.2.0.md)
 - Repository: github.com/here-comes-everybody/PETDC
 - License: Apache License 2.0
 
 ---
 
-_"E ≠ A ≠ N. No negotiation. Show your work, or accept the default."_
+_"E ≠ A ≠ N. Signals ≠ Identity. No negotiation."_
