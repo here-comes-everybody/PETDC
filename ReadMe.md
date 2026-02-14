@@ -260,7 +260,7 @@ PETDC certifies evidence. It does not justify action. **R7 removed v1.3.0.**
 
 ## VII. References
 
-- Protocol: [PETDC_Protocol_v1.3.0.md](./PETDC_Protocol_v1.3.0.md)
+- Protocol: [PETDC_Protocol_v1.3.0.md](./PETDC_Protocol.md)
 - Repository: github.com/here-comes-everybody/PETDC
 - License: Apache License 2.0
 
