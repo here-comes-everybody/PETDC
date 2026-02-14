@@ -1,6 +1,6 @@
 # PETDC — Protocol for Evaluation of Trust-Dependent Claims
 
-**Version:** 1.2.0  
+**Version:** 1.3.0  
 **Status:** Stable / Mechanism-Bound / Adversarial  
 **License:** Apache License 2.0
 
@@ -18,6 +18,8 @@ PETDC is a **mechanical audit framework** that forces explicit decomposition of 
 
 **Core function:** Expose when evidence is insufficient, regardless of consensus.
 
+**v1.3.0 Hardening:** R7 eliminated. Template governance. Self-referential external custody. Gap Inventory registration. Framework temporal firewall.
+
 ---
 
 ## 0.1 When to Use PETDC
@@ -30,6 +32,12 @@ PETDC is a **mechanical audit framework** that forces explicit decomposition of 
 - Adversarial scrutiny expected
 
 **PETDC is harsh.** It will classify many claims as D1/Problematic. This indicates **insufficient evidence**, not "expected outcome."
+
+**Do not use for:**
+
+- Action justification under uncertainty (no R7 lane)
+- First-person mental state certification (no admissible controls)
+- Bayesian likelihood output (D-scores only)
 
 ---
 
@@ -55,6 +63,7 @@ PETDC is a **mechanical audit framework** that forces explicit decomposition of 
 - Allow consensus to substitute for evidence
 - Permit E-evidence to certify A-claims
 - Apologize for D1 classifications
+- **Justify action under uncertainty (v1.3.0: R7 removed)**
 
 **PETDC does:**
 
@@ -62,6 +71,7 @@ PETDC is a **mechanical audit framework** that forces explicit decomposition of 
 - Prevent substitution fallacies
 - Make uncertainty granular and explicit
 - Expose evidence weakness
+- **Require external custody for self-referential audits (v1.3.0)**
 
 ---
 
@@ -75,7 +85,7 @@ Every claim must be classified as:
 2. **Well-Placed Trust** (D2, bounded asymmetry)
 3. **Problematic** (everything else—including D0/D1)
 
-**No fourth option.**
+**No fourth option. No R7.**
 
 ### I.2 D-Scores
 
@@ -88,7 +98,7 @@ Every claim must be classified as:
 
 **Critical:** D1 indicates **audit failure**, not "expected outcome."
 
-### I.3 A-Claim Admissibility (v1.2.0)
+### I.3 A-Claim Admissibility (v1.3.0)
 
 Historical A-claims may achieve D2+ with:
 
@@ -100,6 +110,14 @@ Historical A-claims may achieve D2+ with:
 - **Repeated adversarial observation** (D2)
 
 **Absent these → D1 (insufficient evidence).**
+
+### I.4 Template Governance (v1.3.0)
+
+Gap Inventory process models are **version-locked**. Novel processes require escalation. Prevents arbitrary "normal process" invention.
+
+### I.5 Self-Referential Restriction (v1.3.0)
+
+PETDC auditing itself requires **external custody**. No framework self-certification without adversarial review.
 
 ---
 
@@ -118,13 +136,22 @@ Historical A-claims may achieve D2+ with:
 - Added Rule 10 framing detection
 - Mode separation protocols
 
-### v1.2.0 — Hardened (Current)
+### v1.2.0 — Hardened
 
 - **Removed apologetic D1 language** ("expected," "not weakness," "structural")
 - **D1 now explicitly "insufficient evidence"**
 - **Broadened A-claim admissibility:** post-hoc biometric, cryptographic binding, multi-party custody, repeated observation
 - **Tightened Gap Inventory:** mandatory specificity for unexcluded alternatives
 - **Added prohibited outputs table**
+
+### v1.3.0 — Ungameable (Current)
+
+- **R7 removed:** No action lane, preserves Trilemma integrity
+- **Template governance:** Exhaustive process model list, escalation required
+- **Gap Inventory registration:** Immutable public record
+- **Self-referential external custody:** Framework cannot self-certify
+- **Framework temporal firewall:** Version locked at audit initiation
+- **Mechanical "adversarial" test:** Demonstrated, not inferred
 
 ---
 
@@ -137,19 +164,24 @@ Historical A-claims may achieve D2+ with:
 1. Do I need evidence audit or historical inference?
 2. Am I prepared for D1/Problematic as **insufficient evidence**?
 3. Can I reformulate my A-claim into E-claims?
+4. **Am I seeking action justification? (If yes, PETDC is wrong tool)**
 
 **If you need "what happened":** Use historiography, not PETDC.
 
 **If you need "what can be certified":** Use PETDC.
 
+**If you need "what to do":** Use decision framework outside PETDC scope.
+
 ### III.2 For LLMs
 
 **Initiation checklist:**
 
-- Declare version (v1.2.0)
-- State rules 1-9 visible
+- Declare version (v1.3.0)
+- State rules 1-8 visible
 - Acknowledge **D1 = insufficient evidence**
+- Acknowledge **R7 removed**
 - Include control classification table
+- **Acknowledge self-referential restriction (10.4)**
 
 **Prohibited outputs:**
 
@@ -157,8 +189,11 @@ Historical A-claims may achieve D2+ with:
 - "not evidentiary weakness"
 - "structural limitation"
 - "depending on..."
+- **"likely" / "probably" (Bayesian language)**
 
 **Required:** Mechanical Table B completion or explicit Problematic classification with Rule citation.
+
+**Self-referential audits:** Require external custody declaration.
 
 ---
 
@@ -180,6 +215,10 @@ Historical A-claims may achieve D2+ with:
 
 **No.** Rule 3: Consensus is zero weight.
 
+### "R7 allows action under uncertainty"
+
+**No.** R7 removed v1.3.0. PETDC is epistemic only. Action justification outside scope.
+
 ---
 
 ## V. Limitations
@@ -191,6 +230,10 @@ Historical A-claims may achieve D2+ with:
 **Brittleness:** Outputs expose evidence weakness that may be uncomfortable.
 
 **A-claim skepticism:** Defaults most historical A-claims to D1. This is intentional.
+
+**No action guidance:** v1.3.0 explicitly removes action lane. Users must seek separate decision frameworks.
+
+**Self-referential cost:** Auditing PETDC with PETDC requires external custody, increasing overhead.
 
 ---
 
@@ -209,14 +252,18 @@ PETDC outputs can be misused:
 
 D1 is **insufficient evidence**, not "expected outcome." Do not soften the audit.
 
+### VI.3 Do Not Confuse Epistemic with Decision
+
+PETDC certifies evidence. It does not justify action. **R7 removed v1.3.0.**
+
 ---
 
 ## VII. References
 
-- Protocol: [PETDC_Protocol_v1.2.0.md](./PETDC_Protocol_v1.2.0.md)
+- Protocol: [PETDC_Protocol_v1.3.0.md](./PETDC_Protocol_v1.3.0.md)
 - Repository: github.com/here-comes-everybody/PETDC
 - License: Apache License 2.0
 
 ---
 
-_"E ≠ A ≠ N. Signals ≠ Identity. No negotiation."_
+_"E ≠ A ≠ N. Signals ≠ Identity. No negotiation. No R7."_
